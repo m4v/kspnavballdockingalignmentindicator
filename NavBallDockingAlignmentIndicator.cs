@@ -110,12 +110,12 @@ public class NavBallDockingAlignmentIndicator : MonoBehaviour
 	{
 		if(FlightGlobals.ready == false)
 			return;
-
-		if(FlightGlobals.fetch != null) {
-			if(FlightGlobals.fetch.VesselTarget != null) {
-				if(FlightGlobals.fetch.VesselTarget.GetTargetingMode() == VesselTargetModes.DirectionVelocityAndOrientation) {
-					ITargetable targetPort = FlightGlobals.fetch.VesselTarget;
-					Transform targetTransform = targetPort.GetTransform();
+			
+		if ((FlightGlobals.fetch != null) && (FlightGlobals.fetch.VesselTarget != null)) {
+			ITargetable targetPort = FlightGlobals.fetch.VesselTarget;
+			if (targetPort.GetVessel () != null) {
+				if (targetPort.GetTargetingMode () == VesselTargetModes.DirectionVelocityAndOrientation) {
+					Transform targetTransform = targetPort.GetTransform ();
 					Transform selfTransform = FlightGlobals.ActiveVessel.ReferenceTransform;
 
 					//indicator position
